@@ -71,7 +71,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     fun viewCasos(view: View){
 
         for (pais in data){
-
+            
             mMap.addMarker(MarkerOptions()
                     .position(LatLng(pais.latitude, pais.longitude))
                     .title(pais.nombre)
