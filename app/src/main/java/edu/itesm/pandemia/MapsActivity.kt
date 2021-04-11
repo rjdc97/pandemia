@@ -53,30 +53,40 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun viewTests(view: View){
-        for (pais in data){
+        val pais = data.maxByOrNull { it.tests }
+        //for (pais in data){
+
+        if (pais != null) {
             mMap.addMarker(MarkerOptions()
                     .position(LatLng(pais.latitude, pais.longitude))
                     .title(pais.nombre)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.test)))
         }
+        //}
     }
     fun viewDefunciones(view: View){
-        for (pais in data){
+        val pais = data.maxByOrNull { it.defunciones }
+        //for (pais in data){
+
+        if (pais != null) {
             mMap.addMarker(MarkerOptions()
                     .position(LatLng(pais.latitude, pais.longitude))
                     .title(pais.nombre)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.death)))
         }
+        //}
     }
     fun viewCasos(view: View){
+        val pais = data.maxByOrNull { it.casos }
+        //for (pais in data){
 
-        for (pais in data){
-            
+        if (pais != null) {
             mMap.addMarker(MarkerOptions()
                     .position(LatLng(pais.latitude, pais.longitude))
                     .title(pais.nombre)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.cases)))
         }
+        //}
     }
 
 
