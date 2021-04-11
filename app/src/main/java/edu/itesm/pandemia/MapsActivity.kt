@@ -1,5 +1,7 @@
 package edu.itesm.pandemia
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,10 +10,10 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -50,11 +52,33 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     }
 
-    fun viewData(view: View){
+    fun viewTests(view: View){
         for (pais in data){
-            mMap.addMarker(MarkerOptions().position(LatLng(pais.latitude, pais.longitude)).title(pais.nombre))
+            mMap.addMarker(MarkerOptions()
+                    .position(LatLng(pais.latitude, pais.longitude))
+                    .title(pais.nombre)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.test)))
         }
     }
+    fun viewDefunciones(view: View){
+        for (pais in data){
+            mMap.addMarker(MarkerOptions()
+                    .position(LatLng(pais.latitude, pais.longitude))
+                    .title(pais.nombre)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.death)))
+        }
+    }
+    fun viewCasos(view: View){
+
+        for (pais in data){
+
+            mMap.addMarker(MarkerOptions()
+                    .position(LatLng(pais.latitude, pais.longitude))
+                    .title(pais.nombre)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.cases)))
+        }
+    }
+
 
     private val data = mutableListOf<Pais>()
 
